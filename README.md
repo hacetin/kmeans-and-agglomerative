@@ -38,7 +38,7 @@ I used centroid-linked agglomerative clustering. I just kept the centroid and th
 
 ### Speeding Up the Algorithm
 
-To speed up the algorithm, I didn’t give the whole data points at the beginning. I gave the points to the agglomerative clustering algorithm as the total number of clusters be 100 initially at every iteration. 100 is a number that I found experimentally. If I use 1000, it is too slow for agglomerative clustering algorithm, or if I use 30, it increases the iteration count. Also, batch size must be more than or equal 2K to avoid infinite loop inside the agglomerative algorithm. Here are the steps for speeding up part:
+To speed up the algorithm, I didn’t give the whole data points at the beginning. I gave the points to the agglomerative clustering algorithm as the total number of clusters be 100 initially at every iteration. 100 is a number that I found experimentally. If I use 1000, it is too slow for agglomerative clustering algorithm, or if I use 30, it increases the iteration count. Here are the steps for speeding up part:
 
 1. Run the agglomerative clustering algorithm with 100 data points initially. It will produce K clusters.
 2. Keeping the cluster information from previous step, run the agglomerative clustering algorithm with new (100-K) data points.
