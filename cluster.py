@@ -93,6 +93,7 @@ class AgglomerativeClustering(object):
             self.cluster_item_counts = np.delete(self.cluster_item_counts, i2)
             del self.centroids[i2]
             self.labels[self.labels == i2] = i1
+            self.labels[self.labels > i2] -= 1
 
         return np.array(self.centroids), self.labels
 
