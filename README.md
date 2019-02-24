@@ -1,4 +1,16 @@
-This repo includes the codes that I used in Machine Learning course for K-Means and Agglomerative Clustering. To see results quickly, use sample2.jpg instead of sample.jpg
+This repo includes the codes that I used in Machine Learning course for K-Means and Agglomerative Clustering. To see results quickly, use **sample2.jpg** instead of **sample.jpg**.
+
+# Results
+
+| K   | K-Means Clustering                | Agglomerative Clustering       |
+| --- | --------------------------------- | ------------------------------ |
+| 2   | ![kmeans_2_clusters.png][k2res]   | ![agg_2_clusters.png][a2res]   |
+| 4   | ![kmeans_4_clusters.png][k4res]   | ![agg_4_clusters.png][a4res]   |
+| 8   | ![kmeans_8_clusters.png][k8res]   | ![agg_8_clusters.png][a8res]   |
+| 16  | ![kmeans_16_clusters.png][k16res] | ![agg_16_clusters.png][a16res] |
+
+Original Image(sample.jpg):
+![sample.jpg][samplejpg]
 
 # K-Means Clustering (part1.py)
 
@@ -41,5 +53,14 @@ You can find the questions and the detailed report in docs folder.
 | Questions | [CS550_HW2.pdf][docq]        |
 | Report    | [CS550_HW2_report.pdf][docr] |
 
-[docq]: https://github.com/hacetin/clustering/docs/CS550_HW2.pdf
-[docr]: https://github.com/hacetin/clustering/docs/CS550_HW2_report.pdf
+[samplejpg]: https://github.com/hacetin/cluster/blob/master/sample/sample.jpg?raw=true
+[k2res]: https://github.com/hacetin/cluster/blob/master/result/kmeans_2_clusters.png?raw=true
+[k4res]: https://github.com/hacetin/cluster/blob/master/result/kmeans_4_clusters.png?raw=true
+[k8res]: https://github.com/hacetin/cluster/blob/master/result/kmeans_8_clusters.png?raw=true
+[k16res]: https://github.com/hacetin/cluster/blob/master/result/kmeans_16_clusters.png?raw=true
+[a2res]: https://github.com/hacetin/cluster/blob/master/result/agg_2_clusters.png?raw=true
+[a4res]: https://github.com/hacetin/cluster/blob/master/result/agg_4_clusters.png?raw=true
+[a8res]: https://github.com/hacetin/cluster/blob/master/result/agg_8_clusters.png?raw=true
+[a16res]: https://github.com/hacetin/cluster/blob/master/result/agg_16_clusters.png?raw=true
+[docq]: https://github.com/hacetin/cluster/blob/master/docs/CS550_HW2.pdf
+[docr]: https://github.com/hacetin/cluster/blob/master/docs/CS550_HW2_report.pdf
