@@ -28,7 +28,7 @@ Here are the steps of the k-means algorithm that I implemented:
 
 ### Implementation
 
-I used centroid-linked agglomerative clustering. I just kept the centroid and the item count of each cluster. Here are the steps of the agglomerative clustering algorithm that I implemented:
+I used centroid-linked agglomerative clustering. I just stored the centroid data point and the number of items for each cluster. Here are the steps of the agglomerative clustering algorithm that I implemented:
 
 1. Define each data point as a different cluster, and the point itself as the centroid of the cluster. Also, assign 1 to item count, and initialize a label array showing centroid indexes in the centroid array.
 2. Find the closest two centroids (minimum distance, maximum similarity).
@@ -38,7 +38,7 @@ I used centroid-linked agglomerative clustering. I just kept the centroid and th
 
 ### Speeding Up the Algorithm
 
-To speed up the algorithm, I didn’t give the whole data points at the beginning. I gave the points to the agglomerative clustering algorithm as the total number of clusters be 100 initially at every iteration. 100 is a number that I found experimentally. If I use 1000, it is too slow for agglomerative clustering algorithm, or if I use 30, it increases the iteration count. Here are the steps for speeding up part:
+To speed up the algorithm, I didn’t give all data points at the beginning. I gave 100 points initially at every iteration. Then run the agglomerative algorithm until some point. 100 is a number that I found experimentally. If I use 1000, it is too slow for agglomerative clustering algorithm, or if I use 30, it increases the iteration count. Here are the steps for speeding up part:
 
 1. Run the agglomerative clustering algorithm with 100 data points initially. It will produce K clusters.
 2. Keeping the cluster information from previous step, run the agglomerative clustering algorithm with new (100-K) data points and existing K points.
