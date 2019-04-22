@@ -28,7 +28,7 @@ Here are the steps of the k-means algorithm that I implemented:
 
 ### Implementation
 
-I used centroid-linked agglomerative clustering. I just stored the centroid data point and the number of items for each cluster. Here are the steps of the agglomerative clustering algorithm that I implemented:
+This is a centroid-linked agglomerative clustering. It just stores the centroid data point and the number of items for each cluster. Here are the steps of the agglomerative clustering algorithm:
 
 1. Define each data point as a different cluster, and the point itself as the centroid of the cluster. Also, assign 1 to item count, and initialize a label array showing centroid indexes in the centroid array.
 2. Find the closest two centroids (minimum distance, maximum similarity).
@@ -38,9 +38,9 @@ I used centroid-linked agglomerative clustering. I just stored the centroid data
 
 ### Speeding Up the Algorithm
 
-To speed up the algorithm, I didn’t give all data points at the beginning. I gave 100 points initially at every iteration. Then run the agglomerative algorithm until some point. 100 is a number that I found experimentally. If I use 1000, it is too slow for agglomerative clustering algorithm, or if I use 30, it increases the iteration count. Here are the steps for speeding up part:
+To speed up the algorithm, it doesn't use all data points at the beginning. It starts with a number of clusters initially at every iteration, and ran the agglomerative algorithm until some point. I use 100 for this project. It is like mini-batch size. Large batch size slows down agglomerative clustering algorithm, small btach size increases the number of iterations. Here are the steps for speeding up part:
 
-1. Run the agglomerative clustering algorithm with 100 data points initially. It will produce K clusters.
+1. Run the agglomerative clustering algorithm with 100 data points initially until it produces K clusters.
 2. Keeping the cluster information from previous step, run the agglomerative clustering algorithm with new (100-K) data points and existing K points.
 3. If data points array comes to the end, finish the process. Else, go to 2nd step.
 
