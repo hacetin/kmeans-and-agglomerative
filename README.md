@@ -16,12 +16,12 @@ Original Image(sample.jpg):
 
 ### Implementation
 
-Here are the steps of the k-means algorithm that I implemented:
+Here are the steps of the k-means algorithm:
 
-1. Find the mean and the standard deviation (std) of the given data (im2 in our case).
-2. Generate K random points. For each random point r, choose a random initial centroid as: “r \* std + mean”
-3. Find all distances between data points and centroids and label all points with the closest centroid.
-4. With labeled points, find mean values for each label (cluster). Keep old centroids in a temp variable and assign these new mean values to the real centroid list.
+1. Find the mean and the standard deviation (std) of the given data (im2 in the code).
+2. Generate K random points. For each random point r, choose a random initial centroid as: “r \* std + mean”.
+3. Find all distances between data points and cluster centroids, and assign all points to the cluster with the closest centroid.
+4. With labeled points, find mean values for each label (cluster). Keep old centroids in a temporary variable and assign these new mean values to the real centroid list.
 5. Calculate error as the norm of difference vector between new and old centroids. If error is zero, end the process, and return label array and centroid array. Else, go to 3rd step.
 
 # Agglomerative Clustering (part2.py)
