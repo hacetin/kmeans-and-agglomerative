@@ -44,14 +44,6 @@ To speed up the algorithm, it doesn't use all data points at the beginning. It s
 2. Keeping the cluster information from previous step, run the agglomerative clustering algorithm with new (100-K) data points and existing K points.
 3. If data points array comes to the end, finish the process. Else, go to 2nd step.
 
-# Detailed Info
-
-You can find the questions and the detailed report in docs folder.
-
-| Document  | Link                         |
-| --------- | ---------------------------- |
-| Questions | [CS550_HW2.pdf][docq]        |
-| Report    | [CS550_HW2_report.pdf][docr] |
 
 [samplejpg]: https://github.com/hacetin/cluster/blob/master/sample/sample.jpg?raw=true
 [k2res]: https://github.com/hacetin/cluster/blob/master/result/kmeans_2_clusters.png?raw=true
@@ -62,5 +54,3 @@ You can find the questions and the detailed report in docs folder.
 [a4res]: https://github.com/hacetin/cluster/blob/master/result/agg_4_clusters.png?raw=true
 [a8res]: https://github.com/hacetin/cluster/blob/master/result/agg_8_clusters.png?raw=true
 [a16res]: https://github.com/hacetin/cluster/blob/master/result/agg_16_clusters.png?raw=true
-[docq]: https://github.com/hacetin/cluster/blob/master/docs/CS550_HW2.pdf
-[docr]: https://github.com/hacetin/cluster/blob/master/docs/CS550_HW2_report.pdf
