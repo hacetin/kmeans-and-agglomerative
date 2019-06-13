@@ -58,17 +58,7 @@ class AgglomerativeClustering(object):
     4. Replace all labels of the higher indexed cluster with labels of the lower indexed cluster in the labels array.
     5. If the length of the centroids array is equal to K, end the process, and return label array and centroid array.
        Else, go to 2nd step.
-
-    To speed up the algorithm, it doesn't use all data points at the beginning. It starts with a number of clusters
-    initially at every iteration, and ran the agglomerative algorithm until some point. I use 100 for this project.
-    It is like mini-batch size. Large batch size slows down agglomerative clustering algorithm, small btach size 
-    increases the number of iterations. Here are the steps for speeding up part:
-
-    1. Run the agglomerative clustering algorithm with 100 data points initially until it produces K clusters.
-    2. Keeping the cluster information from previous step, run the agglomerative clustering algorithm with new (100-K)
-       data points and existing K points.
-    3. If data points array comes to the end, finish the process. Else, go to 2nd step.
-    """
+"""
 
     def __init__(self, cluster_count):
         self.cluster_count = cluster_count
@@ -80,8 +70,12 @@ class AgglomerativeClustering(object):
         if type(data) is not np.ndarray:
             data = np.array(data)
 
-        self.cluster_item_counts = np.append(self.cluster_item_counts, np.ones(data.shape[0]))
-        self.labels = np.append(self.labels, [len(self.centroids) + x for x in range(len(data))])
+        self.cluster_item_counts = np.append(
+            self.cluster_item_counts, np.ones(data.shape[0])
+        )
+        self.labels = np.append(
+            self.labels, [len(self.centroids) + x for x in range(len(data))]
+        )
         self.centroids += [d for d in data]
 
         while len(self.cluster_item_counts) != self.cluster_count:
@@ -97,8 +91,12 @@ class AgglomerativeClustering(object):
 
             if i2 < i1:
                 i1, i2 = i2, i1
-            new_centroid = self.weigted_average(self.centroids[i1], self.centroids[i2], self.cluster_item_counts[i1],
-                                                self.cluster_item_counts[i2])
+            new_centroid = self.weigted_average(
+                self.centroids[i1],
+                self.centroids[i2],
+                self.cluster_item_counts[i1],
+                self.cluster_item_counts[i2],
+            )
             self.centroids[i1] = new_centroid
             self.cluster_item_counts[i1] += self.cluster_item_counts[i2]
             self.cluster_item_counts = np.delete(self.cluster_item_counts, i2)
@@ -111,7 +109,9 @@ class AgglomerativeClustering(object):
     def weigted_average(self, centroid1, centroid2, weight1, weight2):
         new_centroid = [0, 0, 0]
         for i in range(3):
-            new_centroid[i] = np.average([centroid1[i], centroid2[i]], weights=[weight1, weight2])
+            new_centroid[i] = np.average(
+                [centroid1[i], centroid2[i]], weights=[weight1, weight2]
+            )
         return np.array(new_centroid)
 
 

@@ -1,44 +1,29 @@
-from skimage.io import imread, imsave, imshow, show
-from skimage.color import label2rgb
+from skimage.io import imread
 from cluster import AgglomerativeClustering, distortion
-from os.path import normpath
+from util import save_image
 
-data_path = normpath("./sample/sample.jpg")
-img = imread(data_path)
-img2 = img.reshape(img.shape[0] * img.shape[1], img.shape[2])
 
-batch_size = 100
+def run_agg(image_path):
+    img = imread(image_path)
+    img_array = img.reshape(img.shape[0] * img.shape[1], img.shape[2])
 
-cluster_count = 33
-agg = AgglomerativeClustering(cluster_count=cluster_count)
-V, cmap = [], []
-start_index = 0
-while start_index < img2.shape[0]:
-    print(start_index, "/", img2.shape[0])
-    end_index = start_index + batch_size - cluster_count
-    V, cmap = agg.fit(img2[start_index:end_index])
-    start_index = end_index
+    batch_size = 100
+    cluster_count = 17
+    step = batch_size - cluster_count
 
-cmap2 = cmap.reshape(img.shape[0], img.shape[1])
-clustered_image = label2rgb(label=cmap2, colors=V / 255)
+    agg = AgglomerativeClustering(cluster_count=cluster_count)
 
-# Cluster for K = 2,3,...,32 to calculate distortion
-distortion_dict = {}
-for cluster_count in range(32, 1, -1):
-    agg.cluster_count = cluster_count
-    V, cmap = agg.fit([])
+    # Cluster until 17 clusters
+    for start_index in range(0, img_array.shape[0], step):
+        print(start_index, "/", img_array.shape[0], end="\r")
+        V, cmap = agg.fit(img_array[start_index : start_index + step])
 
-    distortion_dict[cluster_count] = distortion(img2, cmap, V)
-    print(distortion_dict)
+    # Cluster for 2,3,...,16 save the image to see differences
+    for cluster_count in range(16, 1, -1):
+        agg.cluster_count = cluster_count
+        V, cmap = agg.fit([])
 
-    # For K = 2,4,6,8,16 show or save the image to see differences
-    if cluster_count in [2, 4, 6, 8, 16]:
-        cmap2 = cmap.reshape(img.shape[0], img.shape[1])
-        clustered_image = label2rgb(label=cmap2, colors=V / 255)
-
-        # imshow(clustered_image)
-        # show()
-
-        # To save as bitmap, use '.bmp' instead of '.png'
-        result_path = normpath("result/agg_" + str(cluster_count) + "_clusters.png")
-        imsave(result_path, clustered_image)
+        if cluster_count in [2, 4, 6, 8, 16]:
+            save_image(
+                V, cmap, img.shape, "result/agg_{0}_clusters.png".format(cluster_count)
+            )
