@@ -3,7 +3,7 @@ import numpy as np
 
 class KMeans(object):
     """
-    Here are the steps of the k-means algorithm:
+    The steps of the k-means algorithm:
 
     1. Find the mean and the standard deviation (std) of the given data (im2 in the code).
     2. Generate K random points. For each random point r, choose a random initial centroid as “r * std + mean”.
@@ -48,7 +48,9 @@ class KMeans(object):
 class AgglomerativeClustering(object):
     """
     This is a centroid-linked agglomerative clustering. It just stores the centroid data point and the number of items
-     for each cluster. Here are the steps of the agglomerative clustering algorithm:
+     for each cluster. 
+     
+    The steps of the agglomerative clustering algorithm:
 
     1. Define each data point as a different cluster, and the point itself as the centroid of the cluster. Also, assign
        1 to item count, and initialize a label array showing centroid indexes in the centroid array.
@@ -58,7 +60,7 @@ class AgglomerativeClustering(object):
     4. Replace all labels of the higher indexed cluster with labels of the lower indexed cluster in the labels array.
     5. If the length of the centroids array is equal to K, end the process, and return label array and centroid array.
        Else, go to 2nd step.
-"""
+    """
 
     def __init__(self, cluster_count):
         self.cluster_count = cluster_count
